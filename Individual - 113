@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+	const int size1 = 7;
+	const int size2 = 7;
+	int arr[size1][size2];
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size2; j++)
+		{
+			arr[i][j] = rand() % 777;
+		}
+	}
+	cout << "before:" << endl;
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size2; j++)
+		{
+			cout << arr[i][j] << "	";
+		}
+		cout << endl << endl;
+	}
+	cout  << endl;
+
+	int arr1[size1][size2];
+
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size2; j++)
+		{
+			arr1[i][j] = arr[j][i];
+		}
+	}
+	cout << "after:" << endl;
+  
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size2; j++)
+		{
+			cout << arr1[i][j] << "	";
+		}
+		cout << endl << endl;
+	}
+	return 0;
+}
