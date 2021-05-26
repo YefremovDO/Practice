@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+	int n, m;
+	cout << "Enter n = ";
+	cin >> n;
+	cout << "Enter m = ";
+	cin >> m;
+
+	int** arr = new int* [n];
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = new int[m];
+		for (int j = 0; j < m; j++)
+		{
+			arr[i][j] = rand() % 199 - 99;
+		}
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cout << arr[i][j] << "	";
+		}
+		cout << endl;
+	}
+	cout << endl << endl;
+
+	int max = arr[0][0];
+	int index1 = 0;
+	int index2 = 0;
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			if (abs(arr[i][j]) > max)
+			{
+				max = arr[i][j];
+				index1 = i;
+				index2 = j;
+			}
+		}
+	}
+	int k = 99;
+	cout << "Max = "<< arr[index1][index2]<< endl;
+	cout << "index1 = " <<index1<<"\t"<<"index2 = " <<index2 << endl;
+	while (k>n && k>m)
+	{
+		cout << "Enter k = ";
+	cin >> k;
+	}
+		swap(arr[index1][index2], arr[k-1][k-1]);
+		cout << endl;
+		cout << "Max  on  k x k "<<endl;
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cout << arr[i][j] << "	";
+		}
+		cout << endl;
+	}
+	cout  << endl << endl;
+
+	return 0;
+}
