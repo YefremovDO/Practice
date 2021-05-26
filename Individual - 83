@@ -4,8 +4,9 @@ using namespace std;
 
 int main()
 {
+	setlocale(0, "Ukr");
 	int n;
-	cout << "Enter n:" << endl;
+	cout << "Введiть n:" << endl;
 	cin >> n;
 	cout << "\n";
 	int a = 0;
@@ -31,6 +32,5 @@ int main()
 		}
 		cout << endl;
 	}
-
 	return 0;
 }
