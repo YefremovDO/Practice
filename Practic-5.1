@@ -1,0 +1,72 @@
+#include <iostream>
+#include "windows.h"
+using namespace std;
+
+class Tiles
+{
+public:
+	int size_h, size_w;
+	string brand;
+	double price;
+
+	Tiles(string _brand, int _size_h, int _size_w, double _price)
+	{
+		brand = _brand;
+		size_h = _size_h;
+		size_w = _size_w;
+		price = _price;
+	};
+
+	void setSize_h(int _size_h)
+	{
+		size_h = _size_h;
+	}
+	void setSize_w(int _size_w)
+	{
+		size_w = _size_w;
+	}
+	void setBrand(string _brand)
+	{
+		brand = _brand;
+	}
+	void setPrice(double _price)
+	{
+		price = _price;
+	}
+	int getSize_h()
+	{
+		return size_h;
+	}
+	int getSize_w()
+	{
+		return size_w;
+	}
+	string getBrand()
+	{
+		return brand;
+	}
+	double getPrice()
+	{
+		return price;
+	}
+
+	void getData();
+};
+void Tiles::getData()
+{
+	cout << "\nДані об'єкту: \n" << endl;
+	cout << "Фірма: " << brand << endl;
+	cout << "\nЦіна: " << price << "$" << endl;
+	cout << "\nРозмір h в см.: " << size_h << endl;
+	cout << "\nРозмір w в см.: " << size_w << endl;
+}
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	Tiles tile1{ "A", 5, 26, 750};
+	Tiles tile2{ "Z", 8, 35, 2200};
+
+	tile1.getData();
+	tile2.getData();
+}
