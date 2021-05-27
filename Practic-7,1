@@ -1,0 +1,69 @@
+#include<iostream>
+#include <time.h> 
+using namespace std;
+
+struct Time
+{
+	int hours;
+	int minutes;
+	int seconds;
+};
+
+int main()
+{
+	setlocale(0, "Ukr");
+	Time time1;
+	Time time2;
+	cout << "Перший час: " << endl;
+	cout << "Години: " << endl;
+	cin >> time1.hours;
+	cout << "Хвилини:" << endl;
+	cin >> time1.minutes;
+	cout << "Секунди:" << endl;
+	cin >> time1.seconds;
+
+	cout << "Другий час: " << endl;
+	cout << "Години:" << endl;
+	cin >> time2.hours;
+	cout << "Хвилини:" << endl;
+	cin >> time2.minutes;
+	cout << "Секунди:" << endl;
+	cin >> time2.seconds;
+
+	Time hour_summ;
+	hour_summ.hours = time1.hours + time2.hours;
+
+	if ((time1.minutes + time2.minutes) > 59)
+	{
+		hour_summ.hours += (time1.minutes + time2.minutes) / 60;
+		hour_summ.minutes = (time1.minutes + time2.minutes) % 60;
+	}
+	else
+	{
+		hour_summ.minutes = time1.minutes + time2.minutes;
+	}
+
+	if (time1.seconds + time2.seconds > 59)
+	{
+		if (hour_summ.minutes + (time1.seconds + time2.seconds) / 60 > 59)
+		{
+			hour_summ.hours = hour_summ.hours + (hour_summ.minutes + (time1.seconds + time2.seconds) / 60) / 60;
+			hour_summ.minutes = (hour_summ.minutes + (time1.seconds + time2.seconds) / 60) % 60;
+			hour_summ.seconds = (time1.seconds + time2.seconds) % 60;
+		}
+		else
+		{
+			hour_summ.minutes = hour_summ.minutes + (time1.seconds + time2.seconds) / 60;
+			hour_summ.seconds = (time1.seconds + time2.seconds) % 60;
+		}
+	}
+	else
+	{
+		hour_summ.seconds = time1.seconds + time2.seconds;
+	}
+	cout << "Підсумковий час: " << endl;
+	cout << "Години = " << hour_summ.hours << endl;
+	cout << "Хвилини = " << hour_summ.minutes << endl;
+	cout << "Секунди = " << hour_summ.seconds << endl;
+	return 0;
+}
