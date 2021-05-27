@@ -1,0 +1,171 @@
+#include <iostream>
+#include <time.h>
+#include <windows.h>
+
+using namespace std;
+
+struct Student
+{
+    char surname[12];
+    int group_number;
+    int math_score;
+    int history_score;
+    int programming_score;
+    int Excellence;
+};
+
+void Best_score(Student* student, int size)
+{
+    bool Excellence = false;
+    int j = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (student[i].math_score > 4)
+        {
+            if (student[i].history_score > 4)
+            {
+                if (student[i].programming_score > 4)
+                {
+                    bool Excellence = true;
+                    student[i].Excellence = 1;
+                }
+                else
+                {
+                    bool Excellence = false;
+                }
+            }
+            else
+            {
+                bool Excellence = false;
+            }
+        }
+        else
+        {
+            bool Excellence = false;
+        }
+        cout << "\nПрізвище: " << student[i].surname << endl;
+        cout << "Бали: " << endl;
+        cout << "Математика: " << student[i].math_score << endl;
+        cout << "Історія: " << student[i].history_score << endl;
+        cout << "Програмувння: " << student[i].programming_score << endl;
+
+        if (student[i].Excellence == 1)
+        {
+            cout << "\nВідмінник " << endl;
+        }
+        else
+        {
+            cout << "\nНе відмінник " << endl;
+        }
+
+    }
+
+    for (int a = 0; a < size; a++)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            int k = strcmp(student[i].surname, student[i + 1].surname);
+            if (k > 0)
+            {
+                swap(student[i], student[i + 1]);
+            }
+        }
+    }
+    cout << "Впорядкований список відмінників: \n" << endl;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (student[i].Excellence == 1)
+        {
+            cout << student[i].surname << endl;
+        }
+    }
+
+}
+void Student_element()
+{
+    Student* student;
+    int size, number, count = 0;
+
+    do 
+    {
+        cout << "Введіть кіл-ть студентів(> 0): ";
+        cin >> size;
+        cout << endl;
+    } while (size <= 0);
+    student = new Student[size];
+
+  for (int i = 0; i < size; i++)
+   {
+     cout << "Введіть прізвище студента номер " << i + 1 << ": ";
+      cin.ignore(cin.rdbuf()->in_avail());
+        cin.getline(student[i].surname, 12);
+        cout << endl;
+
+        cout << "Введіть оцінку з математики" << endl;
+      cin >> student[i].math_score;
+      cout << "Введіть оцінку з історії" << endl;
+      cin >> student[i].history_score ;
+      cout << "Введіть оцінку з програмування" << endl;
+      cin >> student[i].programming_score;
+  }
+
+    do 
+    {
+        cout << "Наступна дія:" << endl;
+        cout << "Вивести прізвища відмінників в алфавітному порядку: 1" << endl;
+        cout << "Меню: 2" << endl << endl;
+
+        cout << "Введіть номер: ";
+        cin >> number;
+        cout << endl;
+
+        switch (number)
+        {
+        case 1:
+            Best_score(student, size);
+            break;
+        case 2:
+            count++;
+            break;
+        default:
+            cout << "Невірний номер." << endl << endl;
+            break;
+        }
+    } 
+    while (count == 0);
+}
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    srand(time(NULL));
+
+    int number, count = 0;
+
+    do 
+    {
+        cout << "Виберіть дію:" << endl;
+        cout << "Студент: 1" << endl;
+        cout << "Вийти з програми: 2" << endl << endl;
+        cout << "Введіть число: ";
+        cin >> number;
+        cout << endl;
+
+        switch (number)
+        {
+        case 1:
+            Student_element();
+            break;
+        case 2:
+            cout << "Стоп" << endl << endl;
+            count++;
+            break;
+        default:
+            cout << "Невірний номер." << endl << endl;
+            break;
+        }
+    } while (count == 0);
+}
