@@ -1,0 +1,33 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void PrintGryvnya(int, int);
+
+int main()
+{
+    setlocale(0, "ukr");
+    int n;
+    cout << "Введiть кiлькiсть гривень: " << endl;
+    cin >> n;
+
+    int a = n % 10;
+
+    PrintGryvnya(a, n);
+    return 0;
+}
+void PrintGryvnya(int a, int n)
+{
+    switch (a)
+    {
+    case 1:
+        cout << n << " гривня" << endl;
+        break;
+    case 2:
+    case 3:
+    case 4:
+        cout << n << " гривнi" << endl;
+        break;
+    default:
+        cout << n << " гривeнь" << endl;
+    }
+}
