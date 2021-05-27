@@ -1,0 +1,23 @@
+#include <iostream>
+#include "windows.h"
+using namespace std;
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    const int size = 9;
+    char word[size];
+
+    cout << "Введіть масив: " << endl;
+    for (int i = 0; i < size; i++)
+    {
+        cin >> word[i];
+    }
+    cout << "Поділений масив: " << endl;
+    for (int i = 0; i < size; i++)
+    {
+        cout << word[i] << "  ";
+    }
+    return 0;
+}
