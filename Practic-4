@@ -1,0 +1,35 @@
+#include <iostream>
+#include <conio.h>
+#include <time.h>
+
+using namespace std;
+
+int main()
+{
+    setlocale(0, "ukr");
+    int m, n, k = 0, i, j;
+    cout << "Введiть m = ";
+    cin >> m;
+    cout << "Введiть n = ";
+    cin >> n;
+    int** matrix = new int* [m];
+
+    for (i = 0; i <= m; i++)
+        matrix[i] = new int[n];
+
+    int* out = new int[m];
+
+    srand((unsigned)time(0));
+
+    for (i = 0; i < m; i++)
+    {
+        out[i] = 0;
+        for (j = 0; j < n; j++)
+        {
+            matrix[i][j] = rand() % 99 + 8;
+            cout << matrix[i][j] << "   ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
