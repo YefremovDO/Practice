@@ -1,0 +1,48 @@
+#include <iostream>
+#include <conio.h>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+    setlocale(0, "Ukr");
+    int m, n, k, summ = 0, i, j;
+    cout << "Введiть m = ";
+    cin >> m;
+    cout << "Введiть n = ";
+    cin >> n;
+    
+    int** matrix = new int* [m];
+
+    for (i = 0; i <= m; i++)
+        matrix[i] = new int[n];
+
+    int* out = new int[m];
+    int* lines = new int[n];
+
+    srand((unsigned)time(0));
+
+    for (i = 0; i < m; i++)
+    {
+        summ = 0;
+        out[i] = 0;
+        for (j = 0; j < n; j++)
+        {
+            matrix[i][j] = rand() % 101 + 10;
+            cout << matrix[i][j] << "  ";
+            summ += matrix[i][j];
+        }
+        cout << endl << endl;
+        lines[i] = summ;
+    }
+    int Max = 0;
+    for (j = 1; j < n; j++)
+    {
+        if (lines[j] > lines[Max])
+        {
+            Max = j;
+        }
+    }
+    cout << "Номер рядка: " << Max << " максимальна: " << lines[Max] << endl;
+    return 0;
+}
