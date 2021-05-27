@@ -1,13 +1,16 @@
-#include <iostream>
+#include<iostream>
 #include <cstdlib>
+#include "windows.h"
 using namespace std;
 
 int main()
 {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	int n, m;
-	cout << "Enter n = ";
+	cout << "Введіть кіл-ть рядків = ";
 	cin >> n;
-	cout << "Enter m = ";
+	cout << " Введіть кіл-ть стовпців = ";
 	cin >> m;
 
 	int** arr = new int* [n];
@@ -47,16 +50,18 @@ int main()
 		}
 	}
 	int k = 99;
-	cout << "Max = "<< arr[index1][index2]<< endl;
-	cout << "index1 = " <<index1<<"\t"<<"index2 = " <<index2 << endl;
-	while (k>n && k>m)
+	cout << "Максимальний = " << arr[index1][index2] << endl;
+	cout << "Розташований: " << index1 << "\t" << index2 << endl;
+	while (k > n && k > m)
 	{
-		cout << "Enter k = ";
-	cin >> k;
+		cout << "Введіть k = ";
+		cin >> k;
 	}
-		swap(arr[index1][index2], arr[k-1][k-1]);
-		cout << endl;
-		cout << "Max  on  k x k "<<endl;
+
+
+	swap(arr[index1][index2], arr[k - 1][k - 1]);
+	cout << endl;
+	cout << "Максимальний в k x k " << endl;
 
 	for (int i = 0; i < n; i++)
 	{
@@ -66,7 +71,7 @@ int main()
 		}
 		cout << endl;
 	}
-	cout  << endl << endl;
+	cout << endl << endl;
 
 	return 0;
-}
+};
