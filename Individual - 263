@@ -1,0 +1,49 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+string get_word(istream& is) {
+    string w;
+    is >> w;
+    return w;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Ukr");
+    int n = 0;
+    ifstream file("вишиванка.txt");
+    if (!file) 
+    {
+        cerr << "Помилка відкриття" << endl;
+        return 1;
+    }
+
+    string word, min_word;
+    size_t len, min_len = 99;
+
+    while (file)
+    {
+        word = get_word(file);
+  //      cout << word << endl;
+        if (word.length() == 0)
+            break;
+        len = word.length();
+        
+        if (len < min_len) 
+        {
+            min_len = len;
+            min_word = word;
+            n++;
+        }
+    }
+   
+    file.close();
+    cout << "Саме коротке слово: " << min_word  << endl;
+    cout << "зустрілось " << n << "разів. " << endl;
+
+      file.close();
+    system("pause");
+    return 0;
+}
