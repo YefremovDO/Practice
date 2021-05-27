@@ -1,22 +1,25 @@
 #include <iostream>
 #include <cstdlib>
+#include "windows.h"
 using namespace std;
 
 int main()
 {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	int arr[100];
 	srand(time(NULL));
 	int n;
-	cout << "n = " << endl;
+	cout << "n =  ";
 	cin >> n;
-	cout << "before:"<< endl;
+	cout << "До:\n" << endl;
 	for (int i = 0; i < n; i++)
 	{
 		arr[i] = rand() % 33;
 		cout << arr[i] << "\t";
 	}
-	cout  << endl;
-	
+	cout << endl;
+
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < (n - 1); j++)
@@ -24,10 +27,10 @@ int main()
 			if (arr[j] > arr[j + 1])
 			{
 				swap(arr[j], arr[j + 1]);
-			} 
+			}
 		}
 	}
-	cout << "after:" << endl;
+	cout << "Після:\n" << endl;
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << "\t";
