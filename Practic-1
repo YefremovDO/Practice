@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+void PrintGryvnya(int, int);
+
+int main()
+{
+    int n, a;
+    setlocale(0, "ukr");
+
+    cout << "Введiть кiлькiсть гривень:\n";
+    cin >> n;
+    a = n % 10;
+
+    PrintGryvnya(a, n);
+    return 0;
+}
+void PrintGryvnya(int a, int n)
+{
+    if ((a == 0) || ((a > 4) && (a < 9)))
+    {
+        cout << n << " гривень" << endl;
+    }
+    else if (n == 1)
+    {
+        cout << n << " гривня" << endl;
+    }
+    else if ((a == 2) || (a == 3) || (a == 4))
+    {
+        cout << n << " гривні" << endl;
+    }
+}
