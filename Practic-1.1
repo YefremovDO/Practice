@@ -1,0 +1,31 @@
+#include <iostream>
+#include "windows.h"
+using namespace std;
+
+int NSD(int, int);
+
+int main()
+{
+    int m, n;
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    cout << "Введiть 2 цiлих числа:" << endl;
+    cin >> m >> n;
+    cout << "\nНСД = " << NSD(m, n);
+    return 0;
+}
+int NSD(int m, int n)
+{
+    while (m != n)
+    {
+        if (m > n)
+        {
+            m -= n;
+        }
+        else
+        {
+            n -= m;
+        }
+    }
+    return m;
+}
