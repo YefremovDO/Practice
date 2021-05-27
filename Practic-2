@@ -1,0 +1,41 @@
+#include <iostream>
+    using namespace std;
+    template <typename T> char Symbol(T, T);
+
+    int main()
+    {
+    setlocale(0, "ukr");
+        int number1;
+        int number2;
+        char char1;
+        char char2;
+        
+        cout << "Введiть перше число:" << endl;
+        cin >> number1;
+        cout << "Введiть друге число:" << endl;
+        cin >> number2;
+        cout << "Результат: " << Symbol(number1, number2) << endl;
+       
+       cout << "Введiть перше число:" << endl;
+        cin >> char1;
+        cout << "Введiть друге число:" << endl;
+        cin >> char2;
+        cout << "Результат: " << Symbol(char1, char2) << endl;
+        return 0;
+    }
+    
+    template <typename T> char Symbol(T num1, T num2)
+    {
+        if (num1 == num2)
+        {
+            return '=';
+        }
+        else if (num1 > num2)
+        {
+            return '>';
+        }
+        else
+        {
+            return '<';
+        }
+}
