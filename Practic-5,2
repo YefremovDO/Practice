@@ -1,0 +1,89 @@
+#include <iostream>
+#include "windows.h"
+using namespace std;
+
+class Children
+{
+public:
+	int age;
+	string last_name;
+	string name;
+
+	Children()
+	{
+		last_name = " ";
+		age = 0;
+		name = " ";
+	};
+	Children(string _last_name, int _age, string _name)
+	{
+		last_name = _last_name;
+		age = _age;
+		name = _name;
+	};
+	void setAge(int _age)
+	{
+		age = _age;
+	}
+	void setLastname(string _last_name)
+	{
+		last_name = _last_name;
+	}
+	void setName(string _name)
+	{
+		name = _name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+	string getLastname()
+	{
+		return last_name;
+	}
+	string getName()
+	{
+		return name;
+	}
+
+	void getData();
+	void setData(Children);
+};
+void Children::getData()
+{
+	cout << "\nІм'я: " << name << endl;
+	cout << "Прізвище: " << last_name << endl;
+	cout << "Вік: " << age << endl;
+}
+
+void Children::setData(Children obj)
+{
+	cout << "\nІм'я: " << endl;
+	cin >> name;
+	obj.setName(name);
+	cout << "\nПрізвище: " << endl;
+	cin >> last_name;
+	obj.setLastname(last_name);
+	cout << "\nВік: " << endl;
+	cin >> age;
+	obj.setAge(age);
+	
+}
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	Children child1, child2;
+
+	cout << "Введіть дані: " << endl;
+	child1.setData(child1);
+
+	cout << "\nВведіть дані: " << endl;
+	child2.setData(child2);
+
+	cout << "\nЗаписані дані: " << endl;
+	child1.getData();
+	child2.getData();
+}
