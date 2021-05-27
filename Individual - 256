@@ -1,0 +1,23 @@
+#include<iostream>
+#include <conio.h> 
+#include <fstream>
+#include <algorithm> 
+#include <string>
+using namespace std;
+
+int main()
+{
+	string str;
+	setlocale(LC_ALL, "Ukr");
+	cout << "Введіть строку = ";
+	cin >> str;
+
+	int num = stoi(str);
+	cout << "Вийшло число = ";
+	cout << num << endl;
+	cout << "Перетворемо число  в строку : ";
+
+	string str1 = to_string(num);
+	cout << str1 << endl;
+	return 0;
+}
