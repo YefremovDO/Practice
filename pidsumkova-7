@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include "windows.h" 
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	string phrase;
+
+	cout << "Введіть текст:" << endl;
+	cin.ignore();
+	getline(cin, phrase);
+
+	phrase = ' ' + phrase;
+	int words = 0;
+	for (int i = 0; i < phrase.length(); i++)
+	{
+		if (phrase[i] == ' ' && phrase[i + 1] != ' ')
+		{
+			words++;
+		}
+	}
+	cout << "Кіл-ть слів = " << words;
+	return 0;
+}
