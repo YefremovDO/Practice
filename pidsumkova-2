@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+#include <windows.h>
+using namespace std;
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    int a, b, c, x1, x2;
+
+    cout << "Приклад:  a*(x^2) + b*x + c = 0" << endl << endl;
+
+    cout << "Введіть число a " << endl;
+    cin >> a;
+
+    cout << "Введіть число b " << endl;
+    cin >> b;
+
+    cout << "Введіть число c " << endl;
+    cin >> c;
+
+    double dscr = pow(b, 2)-(4*a*c);
+
+    if (dscr > 0)
+    {
+        x1 = (-b + sqrt(dscr)) / (2*a);
+        x2 = (-b - sqrt(dscr)) / (2*a);
+
+        cout << "X1 = " << x1 << endl;
+        cout << "X2 = " << x2 << endl;
+    }
+    else
+    {
+        if (dscr == 0)
+        {
+            x1 = -b / (2*a);
+
+            cout << "X = " << x1 << endl;
+        }
+        else 
+        {
+            cout << "Немає таких X" << endl;
+        }
+    }
+
+    return 0;
+}
