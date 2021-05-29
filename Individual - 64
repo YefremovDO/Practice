@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cstdlib> 
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ukr");
+	const int size = 50;
+	srand(time(NULL));
+	int arrX[size] = {};
+	int arrY[size] = {};
+	int k, i, j, k_f, a, e;
+	int f;
+	while (true)
+	{
+	for (int i = 0; i < size; i++)
+	{
+		arrX[i] = rand() % 7;
+		cout << "X" << i << " = " << arrX[i] << "\t";
+		arrY[i] = rand() % 7;
+		cout << "Y" << i << " = " << arrY[i] << "\t";
+		cout << endl;
+	}
+	cout << "Яке число співпадінь? k= ";
+	cin >> k;
+
+	j = 0;
+	k_f = 0;
+	f = 0;
+	for (int i = 0; i < size; i++)
+	{
+		if (arrX[i] == arrY[j])
+		{
+			for (int a = 1; a < k; a++)
+			{
+				k_f++;
+				if (arrX[i + a] == arrY[j + a])
+				{
+				k_f++;
+						if (k_f == k)
+					{
+						cout << " Знайдено!! " << endl;
+						cout << "Починаючи з  X[" << i << "]" << " є заданне число співпадінь. " << endl << endl;
+						f = 1;
+					}
+				}
+				k_f = 0;
+			}k_f = 0;
+		}
+	}
+	if (f == 0)
+	{
+		cout << k <<" підряд співпадінь не знайдено." << endl;
+	}
+	cin >> e;
+}
+	system("pause");
+	return 0;
+}
