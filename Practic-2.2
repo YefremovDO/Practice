@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Object
+{
+private:
+    int cost;
+    int how_old;
+public:
+    Object(int company, int model) : cost(company), how_old(model)
+    {}
+    friend bool operator== (const Object& c1, const Object& c2);
+    friend bool operator!= (const Object& c1, const Object& c2);
+    friend bool operator> (const Object& c1, const Object& c2);
+    friend bool operator< (const Object& c1, const Object& c2);
+};
+
+bool operator== (const Object& c1, const Object& c2)
+{
+    return ((c1.cost == c2.cost) && (c1.how_old == c2.how_old));
+}
+bool operator!= (const Object& c1, const Object& c2)
+{
+    return !(c1 == c2);
+}
+bool operator> (const Object& c1, const Object& c2)
+{
+    return ((c1.cost > c2.cost) && (c1.how_old > c2.how_old));
+}
+bool operator< (const Object& c1, const Object& c2)
+{
+    return ((c1.cost < c2.cost) && (c1.how_old < c2.how_old));
+}
+int main()
+{
+    setlocale(0, "ukr");
+    Object obj1(2500, 10);
+    Object obj2(1370, 4);
+
+    if (obj1 == obj2)
+    {
+        cout << "Об'єкти однакові.\n";
+    }
+    if (obj1 != obj2)
+    {
+        cout << "Об'єкти різні.\n";
+    }
+    if (obj1 > obj2)
+    {
+        cout << "Об'єкт 1 більше ніж 2.\n";
+    }
+    if (obj1 < obj2)
+    {
+        cout << "Об'єкт 2 більше ніж 1.\n";
+    }
+    return 0;
+}
