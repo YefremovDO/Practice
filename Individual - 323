@@ -1,0 +1,106 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+struct Student
+{
+    char name[12];
+    char surname[12];
+    int number_class;
+    char litera_class[1];
+};
+
+int main()
+{
+    setlocale(LC_ALL, "ukr");
+
+    Student* student;
+    int size;
+    int s;
+    int i, number, count = 0;
+
+    do 
+    {
+        cout << "Введіть кіл-ть учнів: ";
+        cin >> size;
+        cout << endl;
+    } while (size <= 0);
+
+    student = new Student[size];
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Введіть прізвище учня номер " << i + 1 << ": ";
+        cin.ignore(cin.rdbuf()->in_avail());
+        cin >>student[i].surname;
+
+        cout << "\nІм'я: ";
+        cin>>student[i].name;
+
+        cout << "\nКлас: номер\t";
+        cin >> student[i].number_class;
+
+        cout << "  і літера\t";
+        cin >> student[i].litera_class;
+
+           cout << endl;
+    }
+   
+    do
+    {
+        cout << "\nВиберіть дію:" << endl;
+        cout << "1.Список. " << endl;
+        cout << "2.Пошук " << endl;
+        cout << "3.Вийти з програми. " << endl << endl;
+
+        cout << "\nВведіть номер по списку: ";
+        cin >> number;
+        cout << endl;
+
+        switch (number)
+        {
+        case 1:
+            for (int i = 0; i < size; i++)
+            {
+                cout << "Перелік всіх учнів." << endl << endl;
+                cout << "Прізвище:\t" << student[i].surname << "\t";
+                cout << "Ім'я: \t" << student[i].name << "\t";
+                cout << "Клас: \t" << student[i].number_class << "\t" << student[i].litera_class;
+                cout << endl;
+            }
+            break;
+
+        case 2:
+            for (int a = 0; a < size; a++)
+            {
+                for (int i = a+1; i < size; i++)
+                {
+                    int k = strcmp(student[a].surname, student[i].surname);
+                    if (k == 0)
+                    {
+                        if (a != i)
+                        {
+
+                        cout << "Є спавпадіння:" << endl;
+                        cout << student[a].surname << " з " << student[a].number_class << "-" << student[a].litera_class << " классу, та ";
+                        cout << student[i].surname << " з " << student[i].number_class << "-" << student[i].litera_class << " классу " << endl;
+                        }
+                    }
+                }
+            }
+            cout << endl;
+            break;
+
+        case 3:
+            cout << "Стоп" << endl << endl;
+            count++;
+            break;
+
+        default:
+            cout << "Невірний номер." << endl << endl;
+            break;
+        }
+    } while (count == 0);
+
+  return 0;
+}
