@@ -1,0 +1,36 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "windows.h"
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	cout << "--------Початок--------" << endl << endl;
+
+	ofstream fout;
+	string s = "Привіт Університет";
+
+	fout.open("Practic-8.3.txt");
+	if (fout.is_open())
+	{
+		fout << s;
+		cout << "Записано";
+	}
+	fout.close();
+
+	cout << "\nОбробка..." << endl;
+
+	ifstream fin("Practic-8.3.txt");
+
+	while (!fin.eof())
+	{
+		char ch = fin.get();
+		cout << ch;
+	}
+	fin.close();
+	return 0;
+}
