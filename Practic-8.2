@@ -1,0 +1,76 @@
+#include <iostream>
+#include <fstream>
+#include <time.h>
+#include <string>
+#include "windows.h"
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	srand((unsigned)time(0));
+
+	cout << "--------Початок--------" << endl << endl;
+	int N;
+	string number_string;
+
+	cout << "Введіть кіл-ть чисел N: ";
+	cin >> N;
+
+	ofstream fout;
+
+	try
+	{
+		fout.open("s1.txt");
+	}
+
+	catch (exception const& e)
+	{
+		cout << "Помилка відкриття файлу" << e.what() << endl;
+	}
+
+	int* array = new int[N];
+
+	for (int i = 0; i < N; i++)
+	{
+		array[i] = rand();
+		cout << "Число " << i << " = " << array[i] << endl;
+		fout << array[i] << " ";
+	}
+	fout.close();
+
+	cout << "\nОбробка..." << endl << endl;
+
+	try
+	{
+		ifstream fin("s1.txt");
+		ofstream fout1;
+
+		fout1.open("s2.txt");
+		while (!fin.eof())
+		{
+			char ch = fin.get();
+			if (ch == ' ')
+			{
+				cout << number_string << endl;
+				fout1 << stoi(number_string) + 3 << " ";
+				number_string = "";
+			}
+			else
+			{
+				number_string += ch;
+			}
+		}
+		fout1.close();
+		fin.close();
+	}
+	catch (exception const& e)
+	{
+		cout << "Файл не існує" << e.what() << endl;
+	}
+
+
+	return 0;
+}
