@@ -1,0 +1,49 @@
+#include<iostream>
+#include <windows.h>
+#include <math.h>  
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int n, d;
+	cout << "Введiть n = ";
+	cin >> n;
+	int* arrX = new int[n];
+	int* arrY = new int[n];
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << "\nТочка: " << i + 1 << ". Введiть координату Х = ";
+		cin >> arrX[i];
+		cout << " Введiть координату Y = ";
+		cin >> arrY[i];
+	}
+
+	cout << endl << "Таблиця відстанів:" << endl;
+	cout << endl;
+	cout << "/" << "\t";
+	for (int i = 0; i < n; i++)
+	{
+		cout << i + 1 << "\t";
+	}
+	cout << endl;
+	for (int i = 0; i <= n; i++)
+	{
+		cout << "_" << "\t";
+	}
+	cout << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << i + 1 << "|\t";
+		for (int j = 0; j < n; j++)
+		{
+			d = sqrt(pow((arrX[j] - arrX[i]), 2) + pow((arrY[j] - arrY[i]), 2));
+			cout << d << "\t";
+
+		}cout << endl;
+	}
+
+	return 0;
+}
