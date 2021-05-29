@@ -1,0 +1,55 @@
+#include <iostream>
+#include <fstream>
+#include <time.h>
+#include "windows.h"
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	srand((unsigned)time(0));
+	int counter = 0;
+	char number[20];
+
+	cout << "--------Початок--------" << endl << endl;
+	int N;
+	cout << "Введіть кіл-ть чисел N: ";
+	cin >> N;
+
+	ofstream fout;
+	fout.open("accounts.txt");
+
+	int* array = new int[N];
+
+	for (int i = 0; i < N; i++)
+	{
+		array[i] = rand() % 10;
+		cout << "Число " << i << " = " << array[i] << endl;
+		fout << array[i] << " ";
+	}
+	fout.close();
+
+	cout << "\nОбробка..." << endl;
+
+	ifstream fin("accounts.txt");
+
+	cout << endl;
+	cout << " ' ";
+	while (!fin.eof())
+	{
+		char ch = fin.get();
+		cout << ch;
+		if (ch == ' ')
+		{
+			counter++;
+		}
+	}
+	cout << " ' " << endl;
+
+	cout << " Всього " << counter << " чисел.";
+	fin.close();
+
+	return 0;
+}
