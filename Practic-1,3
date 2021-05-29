@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int price, sale1, sale2;
+    setlocale(LC_ALL, "Ukr");
+
+    cout << "Ціна: " << endl;
+    cin >> price;
+
+    if (price >= 500 && price < 1000)
+    {
+        sale1 = (price * 5) / 100;
+        cout << "Ціна зі знижкою:  " << price - sale1 << endl;
+    }
+    else
+    {
+        if (price >= 1000)
+        {
+            sale2 = price / 10;
+            cout << "Ціна зі знижкою:  " << price - sale2 << endl;
+        }
+        else
+        {
+            cout << "Ціна без знижки:  " << price << endl;
+        }
+    }
+    return 0;
+}
