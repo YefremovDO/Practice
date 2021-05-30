@@ -1,0 +1,28 @@
+#include <iostream>
+#include "windows.h" 
+using namespace std;
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    int num, bin = 0, dec = 0;
+
+    cout << "Введіть число: ";
+    cin >> num;
+
+    dec = num;
+
+    for (int i = 0; num > i; i++)
+    {
+        bin += (dec % 2) * pow(10, i);
+        dec /= 2;
+    }
+
+    cout << "У двійковій системі: " << bin << endl;
+    cout << "У вісімковій системі: " << oct << num << endl;
+    cout << "У шістнадцятьковій системі: " << hex << num << endl;
+
+    return 0;
+}
